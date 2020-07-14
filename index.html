@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sensor</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </head>
+  <body>
+    <button type="button" id="request_permission">iOS13モーションの許可</button><br>
+        
+    <script type="text/javascript">
+        document.getElementById("request_permission").addEventListener("click", function(){
+          if (
+            DeviceMotionEvent &&
+            DeviceMotionEvent.requestPermission &&
+            typeof DeviceMotionEvent.requestPermission === 'function'
+          ) {
+            DeviceMotionEvent.requestPermission();
+          }
+          if (
+            DeviceOrientationEvent &&
+            DeviceOrientationEvent.requestPermission &&
+            typeof DeviceOrientationEvent.requestPermission === 'function'
+          ) {
+            DeviceOrientationEvent.requestPermission();
+          }
+        })
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    const socket = io();
+    const uid = Math.floor(Math.random() * 10000);
+    window.addEventListener('deviceorientation', function(event) {
+        const {alpha, beta, gamma} = event;
+        socket.emit("deviceorientation", {
+            id: uid,
+            alpha: alpha,
+            beta: beta,
+            gamma: gamma
+        });
+    });
+    window.addEventListener('devicemotion', function(event) {
+        const {x, y, z} = event.acceleration;
+        socket.emit("acceleration", {
+            id: uid,
+            x: x,
+            y: y,
+            z: z
+        });
+        const {x: xg, y: yg, z: zg} = event.accelerationIncludingGravity;
+        socket.emit("accelerationIncludingGravity", {
+            id: uid,
+            x: xg,
+            y: yg,
+            z: zg
+        });
+    });
+    </script>
+  </body>
+</html>
