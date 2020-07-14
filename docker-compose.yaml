@@ -1,18 +1,8 @@
 version: '3.7'
 services:
-    https-portal:
-        image: steveltn/https-portal:1.12
-        ports:
-        - '80:80'
-        - '443:443'
-        environment:
-            STAGE: local
-            DOMAINS: 'localhost -> http://app:3000'
     app:
         build: ./
         init: true
         volumes:
             - './index.js:/app/index.js'
             - './index.html:/app/index.html'
-        ports:
-            - '3000'

@@ -4,7 +4,7 @@
   "description": "generate datastream of smartphone sensor",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.js & lt -h https://serverless.social --port 3000",
     "lt": "lt -h https://serverless.social --port 3000"
   },
   "author": "@seiketkm",
