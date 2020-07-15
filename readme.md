@@ -49,3 +49,5 @@ app_1  | your url is: https://hogehoge.serverless.social
 ...
 ```
 
+# 動作確認端末
+iPhone8/iOS 13.5.1
