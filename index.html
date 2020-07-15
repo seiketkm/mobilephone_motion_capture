@@ -32,26 +32,32 @@
     window.addEventListener('deviceorientation', function(event) {
         const {alpha, beta, gamma} = event;
         socket.emit("deviceorientation", {
-            id: uid,
-            alpha: alpha,
-            beta: beta,
-            gamma: gamma
+            uid: uid,
+            body: {
+                alpha: alpha,
+                beta: beta,
+                gamma: gamma
+            }
         });
     });
     window.addEventListener('devicemotion', function(event) {
         const {x, y, z} = event.acceleration;
         socket.emit("acceleration", {
-            id: uid,
-            x: x,
-            y: y,
-            z: z
+            uid: uid,
+            body: {
+                x: x,
+                y: y,
+                z: z
+            }
         });
         const {x: xg, y: yg, z: zg} = event.accelerationIncludingGravity;
         socket.emit("accelerationIncludingGravity", {
-            id: uid,
-            x: xg,
-            y: yg,
-            z: zg
+            uid: uid,
+            body: {
+                x: xg,
+                y: yg,
+                z: zg
+            }
         });
     });
     </script>

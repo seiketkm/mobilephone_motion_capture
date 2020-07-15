@@ -17,19 +17,19 @@ io.on('connection', (socket) => {
     socket.on('deviceorientation', (msg) => {
         fs.appendFile("./data/deviceorientation", JSON.stringify(msg) + "\n", (err) => {
             if (err) throw err;
-            console.log(`deviceorientation: ${msg.alpha} ${msg.beta} ${msg.gamma}`);
+            console.log("deviceorientation: ", msg.body);
         });          
     });
     socket.on('acceleration', (msg) => {
         fs.appendFile("./data/acceleration", JSON.stringify(msg) + "\n", (err) => {
             if (err) throw err;
-            console.log(`acceleration: ${msg.x} ${msg.y} ${msg.z}`);
+            console.log("acceleration: ", msg.body);
         });          
     });
     socket.on('accelerationIncludingGravity', (msg) => {
         fs.appendFile("./data/accelerationIncludingGravity", JSON.stringify(msg) + "\n", (err) => {
             if (err) throw err;
-            console.log(`accelerationIncludingGravity: ${msg.x} ${msg.y} ${msg.z}`);
+            console.log("accelerationIncludingGravity: ", msg.body);
         });          
     });    
 });
