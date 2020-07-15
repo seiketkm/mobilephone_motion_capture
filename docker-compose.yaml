@@ -4,5 +4,4 @@ services:
         build: ./
         init: true
         volumes:
-            - './index.js:/app/index.js'
-            - './index.html:/app/index.html'
+            - ./data/:/app/data/
