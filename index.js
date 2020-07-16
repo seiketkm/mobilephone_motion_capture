@@ -15,19 +15,22 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
     socket.on('deviceorientation', (msg) => {
-        fs.appendFile("./data/deviceorientation", JSON.stringify(msg) + "\n", (err) => {
+        const data = msg.uid + "\t" + msg.body + "\n";
+        fs.appendFile("./data/deviceorientation.tsv", data, (err) => {
             if (err) throw err;
             console.log("deviceorientation: ", msg.body);
         });          
     });
     socket.on('acceleration', (msg) => {
-        fs.appendFile("./data/acceleration", JSON.stringify(msg) + "\n", (err) => {
+        const data = msg.uid + "\t" + msg.body + "\n";
+        fs.appendFile("./data/acceleration.tsv", data, (err) => {
             if (err) throw err;
             console.log("acceleration: ", msg.body);
         });          
     });
     socket.on('accelerationIncludingGravity', (msg) => {
-        fs.appendFile("./data/accelerationIncludingGravity", JSON.stringify(msg) + "\n", (err) => {
+        const data = msg.uid + "\t" + msg.body + "\n";
+        fs.appendFile("./data/accelerationIncludingGravity.tsv", data, (err) => {
             if (err) throw err;
             console.log("accelerationIncludingGravity: ", msg.body);
         });          

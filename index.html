@@ -33,31 +33,19 @@
         const {alpha, beta, gamma} = event;
         socket.emit("deviceorientation", {
             uid: uid,
-            body: {
-                alpha: alpha,
-                beta: beta,
-                gamma: gamma
-            }
+            body: `${alpha}\t${beta}\t${gamma}`
         });
     });
     window.addEventListener('devicemotion', function(event) {
         const {x, y, z} = event.acceleration;
         socket.emit("acceleration", {
             uid: uid,
-            body: {
-                x: x,
-                y: y,
-                z: z
-            }
+            body: `${x}\t${y}\t${z}`
         });
         const {x: xg, y: yg, z: zg} = event.accelerationIncludingGravity;
         socket.emit("accelerationIncludingGravity", {
             uid: uid,
-            body: {
-                x: xg,
-                y: yg,
-                z: zg
-            }
+            body: `${xg}\t${yg}\t${zg}`
         });
     });
     </script>
