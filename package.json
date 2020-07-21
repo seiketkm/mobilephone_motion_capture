@@ -4,7 +4,7 @@
   "description": "generate datastream of smartphone sensor",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js & lt -h https://serverless.social --port 3000",
+    "start": "node index.js & lt -h https://serverless.social --port 3000 --subdomain `hostname`",
     "local": "node index.js",
     "lt": "lt -h https://serverless.social --port 3000"
   },
@@ -12,7 +12,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "netcat": "^1.5.0",
+    "socket.io": "^2.3.0",
+    "stream": "^0.0.2"
   },
   "devDependencies": {
     "localtunnel": "^2.0.0"
